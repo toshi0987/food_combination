@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] =os.environ["DATABASE_URL"]
 db = SQLAlchemy(app)
 
 ###データベース用クラス####
-class Post(db.model):
+class Post(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     mainname=db.Column(db.String(80),nullable=False)
     subname=db.Column(db.String(80),nullable=False)
