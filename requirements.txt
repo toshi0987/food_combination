@@ -1,5 +1,3 @@
-flask
-linebot
-linebot.exceptions
-linebot.models
-flask_sqlalchemy
+Flask
+line-bot-sdk
+Flask_SQLAlchemy
