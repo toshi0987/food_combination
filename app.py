@@ -9,12 +9,12 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-#from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
-"""
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foodcombination.db'
+DATABASE_URL="postgresql-regular-33495"
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 db = SQLAlchemy(app)
 
 ###データベース用クラス####
@@ -23,7 +23,7 @@ class Post(db.model):
     mainname=db.Column(db.String(80),nullable=False)
     subname=db.Column(db.String(80),nullable=False)
     comb_state=db.Column(db.Integer,nullable=False)
-"""
+
 
 YOUR_CHANNEL_ACCESS_TOKEN="f3fyc4UBKCodzjNjwRQLnAL93baaMABwZhn93AR0QGdbjiWpOJn5DzfKj8JWBr/pX6HoVLErj1lfY1azK2FFtFevxUgWj9YzSd+o2OzEwrTonIiK6GEfWRBCFKY62RzOidsKv3IDnNe3/VcKI/ZOdgdB04t89/1O/w1cDnyilFU="
 YOUR_CHANNEL_SECRET="595fd3a35c45b776b49bb534ee654606"
@@ -34,6 +34,19 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 @app.route("/")
 def index():
     return "hello world"
+
+@app.route("/register",methods=["POST"])
+def register():
+    if request.method=="POST":
+        mainname=request.form["mainname"]
+        subname=request.form["subname"]
+        comb_state=-1
+        
+        post=Post(mainname=mainname,subname=subname,comb_state=comb_state)
+        db.session.add(post)
+        db.session.commit()
+        return redirect("/")
+    return render_template("register.html")
 
 @app.route("/callback", methods=['POST'])
 def callback():
