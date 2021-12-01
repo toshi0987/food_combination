@@ -38,8 +38,8 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 @app.route("/")
 def index():
-    #return "hello world"
-    return render_template("index.html")
+    return "hello world"
+    #return render_template("index.html")
 
 @app.route("/register",methods=["POST"])
 def register():
