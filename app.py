@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, render_template, redirect
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -9,9 +9,21 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+#from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
+"""
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foodcombination.db'
+db = SQLAlchemy(app)
+
+###データベース用クラス####
+class Post(db.model):
+    id=db.Column(db.Integer,primary_key=True)
+    mainname=db.Column(db.String(80),nullable=False)
+    subname=db.Column(db.String(80),nullable=False)
+    comb_state=db.Column(db.Integer,nullable=False)
+"""
 
 YOUR_CHANNEL_ACCESS_TOKEN="f3fyc4UBKCodzjNjwRQLnAL93baaMABwZhn93AR0QGdbjiWpOJn5DzfKj8JWBr/pX6HoVLErj1lfY1azK2FFtFevxUgWj9YzSd+o2OzEwrTonIiK6GEfWRBCFKY62RzOidsKv3IDnNe3/VcKI/ZOdgdB04t89/1O/w1cDnyilFU="
 YOUR_CHANNEL_SECRET="595fd3a35c45b776b49bb534ee654606"
