@@ -11,10 +11,15 @@ from linebot.models import (
 )
 from flask_sqlalchemy import SQLAlchemy
 import os
+import re
 
 app = Flask(__name__)
-DATABASE_URL="postgresql-regular-33495"
-app.config['SQLALCHEMY_DATABASE_URI'] =os.environ["DATABASE_URL"]
+#DATABASE_URL="postgresql-regular-33495"
+#["DATABASE_URL"]はheroku側の環境変数
+uri=os.getenv("DATABASE_URL")
+if uri.startwith("postgres://"):
+    uri=uri.replace("postgres://","postgresql://",1)
+app.config['SQLALCHEMY_DATABASE_URI'] =uri
 db = SQLAlchemy(app)
 
 ###データベース用クラス####
