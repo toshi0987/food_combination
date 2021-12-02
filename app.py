@@ -42,8 +42,9 @@ def index():
     #return "hello world"
     return render_template("index.html")
 
-@app.route("/register",methods=["POST"])
+@app.route("/register")
 def register():
+    """
     if request.method=="POST":
         mainname=request.form["mainname"]
         subname=request.form["subname"]
@@ -52,7 +53,7 @@ def register():
         post=Post(mainname=mainname,subname=subname,comb_state=comb_state)
         db.session.add(post)
         db.session.commit()
-        return redirect("/")
+        return redirect("/")"""
     return render_template("register.html")
 
 @app.route("/callback", methods=['POST'])
