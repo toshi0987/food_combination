@@ -19,9 +19,11 @@
 	<p>index.html</p>
 	<a href="/register">登録へ</a>
 	
+	<h2>組み合わせ一覧</h2>
+	
 	{%for post in posts%}
-		<div>{{post.mainname}}</div>
-		<div>{{post.subname}}</div>
+		<div>{{post.mainname}}：</div><div>{{post.subname}}：</div><div>{{post.comb_state}}</div>
+		
 	{%endfor%}
 	
 	
