@@ -19,6 +19,11 @@
 	<p>index.html</p>
 	<a href="/register">登録へ</a>
 	
+	{%for post in posts%}
+		<div>{{post.mainname}}</div>
+		<div>{{post.subname}}</div>
+	{%endfor%}
+	
 	
 	
 	{%block content%}
