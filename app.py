@@ -42,6 +42,25 @@ YOUR_CHANNEL_SECRET="595fd3a35c45b776b49bb534ee654606"
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
+##データベース探索##
+def search(name):
+    result=Post.query.all()
+    bad_res="悪い組み合わせ："+"\n"
+    good_res="良い組み合わせ："+"\n"
+    for r in result:
+        if r.mainname==name:
+            if r.comb_state==-1:
+                bad_res+=r.subname
+            else:
+                good_res+=r.subname
+    res=[]
+    res.append(bad_res)
+    res.append(good_res)
+    return res
+        
+    
+    
+
 @app.route("/")
 def index():
     #return "hello world"
@@ -83,9 +102,16 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    response=search(event.message.text)
+    """
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
+        """
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=response[0]+"\n"+response[1]))
+     
 
 
 if __name__ == "__main__":
