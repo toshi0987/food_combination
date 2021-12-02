@@ -12,6 +12,11 @@ from linebot.models import (
 from flask_sqlalchemy import SQLAlchemy
 import os
 import re
+import psycopg2
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 app = Flask(__name__)
 #DATABASE_URL="postgresql-regular-33495"
