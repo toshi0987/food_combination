@@ -71,13 +71,14 @@ def index():
 def register():
     
     if request.method=="POST":
-        mainname=request.form["mainname"]
-        subname=request.form["subname"]
-        comb_state=-1
-        
-        post=Post(mainname=mainname,subname=subname,comb_state=comb_state)
-        db.session.add(post)
-        db.session.commit()
+        if request.form["mainname"]!='' and request.form["subname"]!='':
+            mainname=request.form["mainname"]
+            subname=request.form["subname"]
+            comb_state=request.form["goodorbad"]
+
+            post=Post(mainname=mainname,subname=subname,comb_state=comb_state)
+            db.session.add(post)
+            db.session.commit()
         return redirect("/")
     return render_template("register.html")
 
