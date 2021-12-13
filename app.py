@@ -63,7 +63,7 @@ def search(name):
     res.append(url_res)
     return res
 
-def recipi_url(ev_text,res):
+
         
     
     
@@ -116,7 +116,7 @@ def handle_message(event):
         event.reply_token,
         TextSendMessage(text=event.message.text))
         """
-    line_bot_api.reply_message(
+    line_bot_api.reply_message(heroku
         event.reply_token,
         TextSendMessage(text=response[0]+"\n"+response[1]+"\n"+response[2]))
      
