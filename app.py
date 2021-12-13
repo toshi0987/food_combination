@@ -89,6 +89,14 @@ def register():
         return redirect("/")
     return render_template("register.html")
 
+@app.route("/<int:id>/delete",methods=["GET"])
+def delete(id):
+    post=Post.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect("/")
+
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
