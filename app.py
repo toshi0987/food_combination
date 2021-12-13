@@ -47,16 +47,23 @@ def search(name):
     result=Post.query.all()
     bad_res="悪い組み合わせ："+"\n"
     good_res="良い組み合わせ："+"\n"
+    url_res="https://kurashiru.com/search?query="
+    and_key="%E3%80%80"
+    url_res+=name
     for r in result:
         if r.mainname==name:
             if r.comb_state==-1:
-                bad_res+=r.subname
+                bad_res+=r.subname+"\t"
             else:
-                good_res+=r.subname
+                good_res+=r.subname+"\t"
+                url_res+=and_key+r.subname
     res=[]
     res.append(bad_res)
     res.append(good_res)
+    res.append(url_res)
     return res
+
+def recipi_url(ev_text,res):
         
     
     
@@ -111,7 +118,7 @@ def handle_message(event):
         """
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=response[0]+"\n"+response[1]))
+        TextSendMessage(text=response[0]+"\n"+response[1]+"\n"+response[2]))
      
 
 
