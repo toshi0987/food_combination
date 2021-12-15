@@ -53,18 +53,18 @@ def search(name):
     for r in result:
         if r.mainname==name:
             if r.comb_state==-1:
-                if !(r.subname in bad_res):
+                if not(r.subname in bad_res):
                     bad_res+=r.subname+"\t"
             else:
-                if !(r.subname in good_res):
+                if not(r.subname in good_res):
                     good_res+=r.subname+"\t"
                     url_res+=and_key+r.subname
         if r.subname==name:
             if r.comb_state==-1:
-                if !(r.mainname in bad_res):
+                if not(r.mainname in bad_res):
                     bad_res+=r.mainname+"\t"
             else:
-                if !(r.mainname in good_res):
+                if not(r.mainname in good_res):
                     good_res+=r.mainname+"\t"
                     url_res+=andkey+r.mainname
     res=[]
