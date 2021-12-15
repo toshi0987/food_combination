@@ -125,6 +125,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     response=search(event.message.text)
+    res_mes="☆☆☆おすすめレシピ☆☆☆"
     """
     line_bot_api.reply_message(
         event.reply_token,
@@ -132,7 +133,8 @@ def handle_message(event):
         """
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=response[0]+"\n"+response[1]+"\n"+response[2]))
+        TextSendMessage(text=response[0]+"\n"+response[1]+"\n"+
+                        res_mes+"\n"+response[2]))
      
 
 
