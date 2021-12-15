@@ -42,6 +42,27 @@ YOUR_CHANNEL_SECRET="595fd3a35c45b776b49bb534ee654606"
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
+###表記揺れ対策用辞書###
+spell_dict={
+    "ほうれんそう":"ホウレンソウ",
+    "ほうれん草":"ホウレンソウ",
+    "うなぎ":"ウナギ",
+    "鰻":"ウナギ",
+    "てんぷら":"天ぷら",
+    "かに":"カニ",
+    "蟹":"カニ",
+    "にんじん":"ニンジン",
+    "人参":"ニンジン",
+    "わかめ":"ワカメ",
+    "なす":"ナス",
+    "茄子":"ナス",
+    "しらす":"シラス",
+    "ひじき":"ヒジキ",
+    "とまと":"トマト",
+    "ポーク":"豚肉",
+    "れもん":"レモン"
+}
+
 ##データベース探索##
 def search(name):
     result=Post.query.all()
