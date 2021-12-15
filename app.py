@@ -121,7 +121,7 @@ def search(name):
             else:
                 if not(r.mainname in good_res):
                     good_res+=r.mainname+"\t"
-                    url_res+=andkey+r.mainname
+                    url_res+=and_key+r.mainname
     res=[]
     res.append(bad_res)
     res.append(good_res)
