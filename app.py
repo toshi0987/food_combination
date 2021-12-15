@@ -84,7 +84,7 @@ def index():
 def register():
     
     if request.method=="POST":
-        if request.form["mainname"]!='' and request.form["subname"]!='' and request.form["godoorbad"]==(1 or -1):
+        if request.form["mainname"]!='' and request.form["subname"]!='':
             mainname=request.form["mainname"]
             subname=request.form["subname"]
             comb_state=request.form["goodorbad"]
