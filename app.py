@@ -57,6 +57,12 @@ def search(name):
             else:
                 good_res+=r.subname+"\t"
                 url_res+=and_key+r.subname
+        if r.subname==name:
+            if r.comb_state==-1:
+                bad_res+=r.mainname+"\t"
+            else:
+                good_res+=r.mainname+"\t"
+                url_res+=andkey+r.mainname
     res=[]
     res.append(bad_res)
     res.append(good_res)
