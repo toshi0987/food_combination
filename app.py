@@ -84,7 +84,7 @@ def index():
 def register():
     
     if request.method=="POST":
-        if request.form["mainname"]!='' and request.form["subname"]!='':
+        if request.form["mainname"]!='' and request.form["subname"]!='' and request.form["godoorbad"]==(1 or -1):
             mainname=request.form["mainname"]
             subname=request.form["subname"]
             comb_state=request.form["goodorbad"]
@@ -125,7 +125,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     response=search(event.message.text)
-    res_mes="☆☆☆おすすめレシピ☆☆☆"
+    #res_mes="☆☆☆おすすめレシピ☆☆☆"
+    res_mes="▼おすすめレシピ"
     """
     line_bot_api.reply_message(
         event.reply_token,
