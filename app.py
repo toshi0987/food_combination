@@ -101,8 +101,8 @@ def search(name):
     if name in spell_dict.keys():
         name=spell_dict[name]
     result=Post.query.all()
-    bad_res="悪い組み合わせ："+"\n"
-    good_res="良い組み合わせ："+"\n"
+    bad_res="▼悪い組み合わせ"+"\n"
+    good_res="▼良い組み合わせ"+"\n"
     url_res="https://kurashiru.com/search?query="
     and_key="%E3%80%80"
     url_res+=name
